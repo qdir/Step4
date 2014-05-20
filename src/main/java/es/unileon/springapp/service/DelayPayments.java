@@ -1,28 +1,21 @@
 package es.unileon.springapp.service;
 
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-
-import com.springsource.vfabric.licensing.log.LogFactory;
-
-import sun.rmi.runtime.Log;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class DelayPayments {
 
-    /** Logger for this class and subclasses */
-    //protected final Log logger = LogFactory.getLog(getClass());
+	/** Logger for this class and subclasses */
+	protected final Log logger = LogFactory.getLog(getClass());
 
-    @Min(0)
-    @Max(50)
-    private int percentage;
+	private String date;
 
-    public void setPercentage(int i) {
-        percentage = i;
-        //logger.info("Percentage set to " + i);
-    }
+	public String getDate() {
+		return date;
+	}
 
-    public int getPercentage() {
-        return percentage;
-    }
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 }

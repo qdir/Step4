@@ -8,7 +8,7 @@ import es.unileon.springapp.domain.Payment;
 
 public interface FinancialProduct extends Serializable {
 
-    public void increasePrice(int percentage);
+    public void delayPayment(String date);
     
     public List<Payment> getPayments();
 

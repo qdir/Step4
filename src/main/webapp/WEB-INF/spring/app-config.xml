@@ -11,28 +11,52 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<bean id="productManager" class="es.unileon.springapp.service.Loan">
-		<property name="products">
+
+		<property name="payments">
 			<list>
 				<ref bean="payment1" />
 				<ref bean="payment2" />
 				<ref bean="payment3" />
 			</list>
+
+
 		</property>
+
+		<property name="delayComissionPercentage">
+			<value type="java.lang.Integer">3</value>
+		</property>
+
+
+
+
+
+
 	</bean>
 
 	<bean id="payment1" class="es.unileon.springapp.domain.Payment">
 		<property name="date" value="22/05/1992" />
 		<property name="fee" value="300" />
+		<property name="paid">
+			<value type="java.lang.Boolean">true</value>
+		</property>
+
 	</bean>
+
 
 	<bean id="payment2" class="es.unileon.springapp.domain.Payment">
 		<property name="date" value="22/06/1992" />
 		<property name="fee" value="300" />
+		<property name="paid">
+			<value type="java.lang.Boolean">false</value>
+		</property>
 	</bean>
 
 	<bean id="payment3" class="es.unileon.springapp.domain.Payment">
 		<property name="date" value="22/07/1992" />
 		<property name="fee" value="33" />
+		<property name="paid">
+			<value type="java.lang.Boolean">false</value>
+		</property>
 	</bean>
 
 	<bean id="messageSource"
