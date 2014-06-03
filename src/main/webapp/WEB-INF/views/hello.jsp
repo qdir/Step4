@@ -4,7 +4,7 @@
 <head>
 <title><fmt:message key="title" /></title>
 </head>
-<body>
+<body bgcolor="#A9F5E1">
 	<h1>
 		<fmt:message key="heading" />
 	</h1>
@@ -14,9 +14,9 @@
 	</p>
 	<h3>Payments of the loan</h3>
 	<c:forEach items="${model.products}" var="prod">
-		<c:out value="${prod.date}" />
-		<i>$<c:out value="${prod.fee}" /></i>
-		<i>$<c:out value="${prod.paid}" /></i>
+		<span style="background-color: Chartreuse">Identifier: 
+		<c:out value="${prod.identifier}" /> Expiration date: <c:out value="${prod.expiringdate}" /> <i><c:out value="${prod.fee}" /></i> 
+		<i>$<c:out value="${prod.paid}" /></i></span>
 		<br>
 		<br>
 	</c:forEach>

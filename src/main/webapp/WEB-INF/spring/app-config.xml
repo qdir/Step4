@@ -1,81 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
 
-	<bean id="productManager" class="es.unileon.springapp.service.Loan">
+    <!-- Scans the classpath of this application for @Components to deploy as beans -->
+    <context:component-scan base-package="com.companyname.springapp.web" />
 
-		<property name="payments">
-			<list>
-				<ref bean="payment1" />
-				<ref bean="payment2" />
-				<ref bean="payment3" />
-			</list>
+    <!-- Configures the @Controller programming model -->
+    <mvc:annotation-driven/>
+	
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>        
+  </bean> 
+    
+<!--     	<bean id="loan" class="com.companyname.springapp.service.Loan"> -->
+<!-- 		<property name="identifier" value="Q3" />		 -->
+<!-- 		<property name="delayComissionPercentage"> -->
+<!-- 			<value type="java.lang.Integer">3</value> -->
+<!-- 		</property> -->
 
-
-		</property>
-
-		<property name="delayComissionPercentage">
-			<value type="java.lang.Integer">3</value>
-		</property>
-
-
-
-
-
-
-	</bean>
-
-	<bean id="payment1" class="es.unileon.springapp.domain.Payment">
-		<property name="date" value="22/05/1992" />
-		<property name="fee" value="300" />
-		<property name="paid">
-			<value type="java.lang.Boolean">true</value>
-		</property>
-
-	</bean>
-
-
-	<bean id="payment2" class="es.unileon.springapp.domain.Payment">
-		<property name="date" value="22/06/1992" />
-		<property name="fee" value="300" />
-		<property name="paid">
-			<value type="java.lang.Boolean">false</value>
-		</property>
-	</bean>
-
-	<bean id="payment3" class="es.unileon.springapp.domain.Payment">
-		<property name="date" value="22/07/1992" />
-		<property name="fee" value="33" />
-		<property name="paid">
-			<value type="java.lang.Boolean">false</value>
-		</property>
-	</bean>
-
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="messages" />
-	</bean>
-
-	<!-- Scans the classpath of this application for @Components to deploy as 
-		beans -->
-	<context:component-scan base-package="es.unileon.springapp.web" />
-
-	<!-- Configures the @Controller programming model -->
-	<mvc:annotation-driven />
-
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView"></property>
-		<property name="prefix" value="/WEB-INF/views/"></property>
-		<property name="suffix" value=".jsp"></property>
-	</bean>
+<!-- 	</bean> -->
+	
 </beans>
